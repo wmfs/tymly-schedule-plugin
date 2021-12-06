@@ -1,0 +1,42 @@
+{
+  "schedule": [
+    {
+      "expression": "*/2 * * * * *",
+      "input": {},
+      "sendResponse": "COMPLETE"
+    }
+  ],
+  "Comment": "Send cat update",
+  "StartAt": "HappinessLevel",
+  "States": {
+    "HappinessLevel": {
+      "Type": "Task",
+      "Resource": "function:tymlyTest_randomNumber",
+      "ResultPath": "$.happinessLevel",
+      "Next": "HungerLevel"
+    },
+    "HungerLevel": {
+      "Type": "Task",
+      "Resource": "function:tymlyTest_randomNumber",
+      "ResultPath": "$.hungerLevel",
+      "Next": "Upserting"
+    },
+    "Upserting": {
+      "Type": "Task",
+      "InputPath": "$",
+      "Resource": "module:upserting",
+      "ResourceConfig": {
+        "modelId": "tymlyTest_catStats"
+      },
+      "End": true
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "$everyone",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "happinessLevel": {
+      "type": "integer"
+    },
+    "hungerLevel": {
+      "type": "integer"
+    }
+  }
+}
