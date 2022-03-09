@@ -1,0 +1,29 @@
+{
+  "Comment": "Send cat update",
+  "StartAt": "TirednessLevel",
+  "States": {
+    "TirednessLevel": {
+      "Type": "Task",
+      "Resource": "function:tymlyTest_randomNumber",
+      "ResultPath": "$.tirednessLevel",
+      "Next": "Upserting"
+    },
+    "Upserting": {
+      "Type": "Task",
+      "InputPath": "$",
+      "Resource": "module:upserting",
+      "ResourceConfig": {
+        "modelId": "tymlyTest_catStats"
+      },
+      "End": true
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "$everyone",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}
