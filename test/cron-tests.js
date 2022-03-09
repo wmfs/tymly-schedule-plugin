@@ -3,7 +3,9 @@
 const expect = require('chai').expect
 const tymly = require('@wmfs/tymly')
 const path = require('path')
-const STATE_MACHINE_NAME = 'tymlyTest_sendCatUpdate'
+
+const SendCatUpdate = 'tymlyTest_sendCatUpdate'
+// const SetTirednessLevel = 'tymlyTest_setTirednessLevel'
 
 describe('Cron tests', function () {
   this.timeout(60000) // 60 second timeout
@@ -32,9 +34,7 @@ describe('Cron tests', function () {
     expect(catStats.length).to.eql(0)
   })
 
-  it('wait 10 seconds', (done) => {
-    setTimeout(done, 10000)
-  })
+  it('wait 10 seconds', done => setTimeout(done, 10000))
 
   it('check the state machine has run multiple times', async () => {
     const catStats = await catStatsModel.find({})
@@ -43,16 +43,18 @@ describe('Cron tests', function () {
     expect(catStats.length).to.be.lessThanOrEqual(6)
   })
 
-  it('shutdown Tymly', async () => {
-    await tymlyService.shutdown()
+  it('stop cat updates', () => {
+    cronService.stopTask(SendCatUpdate, '*/2 * * * * *')
   })
 
-  it('wait 5 seconds', (done) => {
-    setTimeout(done, 5000)
-  })
+  it('wait 5 seconds', done => setTimeout(done, 5000))
 
   it('ensure scheduled task has not run again', async () => {
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.be.lessThan(7)
+  })
+
+  it('shutdown Tymly', async () => {
+    await tymlyService.shutdown()
   })
 })
