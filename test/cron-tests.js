@@ -11,9 +11,9 @@ describe('Cron tests', function () {
 
   let tymlyService
   let cronService
-  let statebox
+  // let statebox
   let catStatsModel
-  let executionsModel
+  // let executionsModel
   let taskModel
 
   let lastRunCount
@@ -32,10 +32,10 @@ describe('Cron tests', function () {
 
     tymlyService = tymlyServices.tymly
     cronService = tymlyServices.cron
-    statebox = tymlyServices.statebox
+    // statebox = tymlyServices.statebox
     taskModel = tymlyServices.storage.models.schedule_task
     catStatsModel = tymlyServices.storage.models.tymlyTest_catStats
-    executionsModel = tymlyServices.storage.models.tymly_execution
+    // executionsModel = tymlyServices.storage.models.tymly_execution
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(0)
@@ -99,32 +99,33 @@ describe('Cron tests', function () {
     cronService.startTask(scheduleKey)
   })
 
-  it('check the update has persisted to database', async () => {
-    const tasks = await taskModel.find({})
-    expect(tasks.length).to.eql(1)
-    expect(tasks[0].rule).to.eql(null)
-    expect(tasks[0].datetime).to.not.eql(null)
-    expect(tasks[0].scheduleType).to.eql('datetime')
-  })
-
-  it('wait 10 seconds', done => setTimeout(done, 10000))
+  it('wait 15 seconds', done => setTimeout(done, 15000))
 
   it('check the state machine has run once more', async () => {
     lastRunCount++
 
     const tasks = await taskModel.find({})
     expect(tasks.length).to.eql(1)
+    expect(tasks[0].rule).to.eql(null)
+    expect(tasks[0].datetime).to.not.eql(null)
     expect(tasks[0].scheduleType).to.eql('datetime')
-    // expect(tasks[0].totalRunCount).to.eql(lastRunCount)
+    expect(tasks[0].totalRunCount).to.eql(lastRunCount)
 
     const catStats = await catStatsModel.find({})
-    // expect(catStats.length).to.eql(lastRunCount)
-
-    console.log({ tasks, catStats })
+    expect(catStats.length).to.eql(lastRunCount)
   })
 
-  // wait 10 seconds
-  // check update has not happened again
+  it('wait 10 seconds', done => setTimeout(done, 10000))
+
+  it('ensure scheduled task has not run again', async () => {
+    const tasks = await taskModel.find({})
+    expect(tasks.length).to.eql(1)
+
+    expect(tasks[0].totalRunCount).to.eql(lastRunCount)
+
+    const catStats = await catStatsModel.find({})
+    expect(catStats.length).to.eql(lastRunCount)
+  })
 
   it('shutdown Tymly', async () => {
     await tymlyService.shutdown()
