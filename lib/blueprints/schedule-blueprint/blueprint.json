@@ -1,0 +1,9 @@
+{
+  "name": "schedule",
+  "namespace": "schedule",
+  "version": "2.171.0",
+  "label": "Tymly schedule plugin for scheduling state machines",
+  "author": "WMFS",
+  "description": "Tymly schedule plugin for scheduling state machines",
+  "tags": []
+}

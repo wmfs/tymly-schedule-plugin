@@ -1,11 +1,4 @@
 {
-  "schedule": [
-    {
-      "expression": "*/2 * * * * *",
-      "input": {},
-      "sendResponse": "COMPLETE"
-    }
-  ],
   "Comment": "Send cat update",
   "StartAt": "HappinessLevel",
   "States": {

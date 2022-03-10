@@ -1,0 +1,37 @@
+{
+  "title": "State machine schedules",
+  "description": "Stores schedule configuration for state machines",
+  "type": "object",
+  "primaryKey": ["key"],
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "stateMachineName": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object"
+    },
+    "sendResponse": {
+      "type": "string"
+    },
+    "expression": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "startOnBoot": {
+      "type": "boolean"
+    },
+    "lastRanTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastRanExecutionName": {
+      "type": "string"
+    }
+  }
+}
