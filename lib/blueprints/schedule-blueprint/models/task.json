@@ -16,10 +16,10 @@
     "sendResponse": {
       "type": "string"
     },
-    "expression": {
+    "rule": {
       "type": "string"
     },
-    "date": {
+    "datetime": {
       "type": "string",
       "format": "date-time"
     },
@@ -32,6 +32,9 @@
     },
     "lastRanExecutionName": {
       "type": "string"
+    },
+    "totalRunCount": {
+      "type": "integer"
     }
   }
 }
