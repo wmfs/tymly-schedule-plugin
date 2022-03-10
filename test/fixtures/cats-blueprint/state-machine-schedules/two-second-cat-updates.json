@@ -1,6 +1,6 @@
 {
   "startOnBoot": true,
-  "expression": "*/2 * * * * *",
+  "rule": "*/2 * * * * *",
   "input": {},
   "stateMachineName": "tymlyTest_sendCatUpdate",
   "sendResponse": "COMPLETE"
