@@ -2,7 +2,9 @@
   "title": "State machine schedules",
   "description": "Stores schedule configuration for state machines",
   "type": "object",
-  "primaryKey": ["key"],
+  "primaryKey": [
+    "key"
+  ],
   "properties": {
     "key": {
       "type": "string"
@@ -16,6 +18,13 @@
     "sendResponse": {
       "type": "string"
     },
+    "scheduleType": {
+      "type": "string",
+      "enum": [
+        "rule",
+        "datetime"
+      ]
+    },
     "rule": {
       "type": "string"
     },
@@ -26,7 +35,11 @@
     "startOnBoot": {
       "type": "boolean"
     },
-    "lastRanTimestamp": {
+    "lastRanStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastRanEnd": {
       "type": "string",
       "format": "date-time"
     },
