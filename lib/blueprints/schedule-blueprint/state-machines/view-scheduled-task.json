@@ -15,6 +15,13 @@
         "modelId": "schedule_task"
       },
       "ResultPath": "$",
+      "Next": "FindExecutions"
+    },
+    "FindExecutions": {
+      "Type": "Task",
+      "InputPath": "$.key",
+      "Resource": "module:findScheduledExecutions",
+      "ResultPath": "$.executions",
       "Next": "View"
     },
     "View": {
