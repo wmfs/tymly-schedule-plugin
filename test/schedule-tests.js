@@ -9,12 +9,20 @@ const scheduleKey = 'tymlyTest_twoSecondCatUpdates'
 describe('Tymly schedule tests', function () {
   this.timeout(60000) // 60 second timeout
 
+  before(function () {
+    if (process.env.PG_CONNECTION_STRING && !/^postgres:\/\/[^:]+:[^@]+@(?:localhost|127\.0\.0\.1).*$/.test(process.env.PG_CONNECTION_STRING)) {
+      console.log(`Skipping tests due to unsafe PG_CONNECTION_STRING value (${process.env.PG_CONNECTION_STRING})`)
+      this.skip()
+    }
+  })
+
   let tymlyService
   let scheduleService
   // let statebox
   let catStatsModel
   // let executionsModel
   let taskModel
+  let client
 
   let lastRunCount
 
@@ -25,7 +33,8 @@ describe('Tymly schedule tests', function () {
           path.resolve(__dirname, './fixtures/cats-blueprint')
         ],
         pluginPaths: [
-          path.resolve(__dirname, '..')
+          path.resolve(__dirname, '..'),
+          require.resolve('@wmfs/tymly-pg-plugin')
         ]
       }
     )
@@ -36,6 +45,7 @@ describe('Tymly schedule tests', function () {
     taskModel = tymlyServices.storage.models.schedule_task
     catStatsModel = tymlyServices.storage.models.tymlyTest_catStats
     // executionsModel = tymlyServices.storage.models.tymly_execution
+    client = tymlyServices.storage.client
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(0)
@@ -146,22 +156,43 @@ describe('Tymly schedule tests', function () {
   })
 
   it('re-boot tymly', async () => {
-    await tymly.boot(
+    const tymlyServices = await tymly.boot(
       {
         blueprintPaths: [
           path.resolve(__dirname, './fixtures/cats-blueprint')
         ],
         pluginPaths: [
-          path.resolve(__dirname, '..')
+          path.resolve(__dirname, '..'),
+          require.resolve('@wmfs/tymly-pg-plugin')
         ]
       }
     )
+
+    tymlyService = tymlyServices.tymly
+    scheduleService = tymlyServices.schedule
+    taskModel = tymlyServices.storage.models.schedule_task
+    catStatsModel = tymlyServices.storage.models.tymlyTest_catStats
+    client = tymlyServices.storage.client
   })
 
   it('check blueprint tasks not overwritten updates', async () => {
     const tasks = await taskModel.find({})
     expect(tasks.length).to.eql(1)
+    expect(tasks[0].key).to.eql(scheduleKey)
+    expect(tasks[0].stateMachineName).to.eql('tymlyTest_sendCatUpdate')
     expect(tasks[0].scheduleType).to.eql('datetime')
+    expect(tasks[0].interval).to.eql(null)
     expect(tasks[0].status).to.eql('STARTED')
+    expect(tasks[0].totalRunCount).to.eql(lastRunCount)
+  })
+
+  it('clean up data', async () => {
+    await client.query('DROP SCHEMA tymly CASCADE;')
+    await client.query('DROP SCHEMA tymly_test CASCADE;')
+    await client.query('DROP SCHEMA schedule CASCADE;')
+  })
+
+  it('shutdown Tymly again', async () => {
+    await tymlyService.shutdown()
   })
 })
