@@ -102,9 +102,9 @@ describe('Tymly schedule tests', function () {
         year: datetime.getFullYear(),
         month: datetime.getMonth(),
         date: datetime.getDate(),
-        hours: datetime.getHours(),
-        minutes: datetime.getMinutes(),
-        seconds: datetime.getSeconds()
+        hour: datetime.getHours(),
+        minute: datetime.getMinutes(),
+        second: datetime.getSeconds()
       }
     )
 
