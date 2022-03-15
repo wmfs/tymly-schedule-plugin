@@ -9,6 +9,7 @@
     "plugin",
     "task",
     "scheduling",
+    "schedule",
     "cron"
   ],
   "license": "MIT",
