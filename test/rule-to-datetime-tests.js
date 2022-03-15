@@ -2,8 +2,8 @@
 
 const expect = require('chai').expect
 
-const ruleToDatetime = require('../lib/components/services/schedule/rule-to-datetime')
-const datetimeToRule = require('../lib/components/services/schedule/datetime-to-rule')
+const ruleToDatetime = require('../lib/components/services/schedule/utils/rule-to-datetime')
+const datetimeToRule = require('../lib/components/services/schedule/utils/datetime-to-rule')
 
 describe('Rule to datetime tests', function () {
   it('No options, should default to now', () => {
