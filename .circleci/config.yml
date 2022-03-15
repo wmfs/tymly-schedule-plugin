@@ -8,6 +8,17 @@ jobs:
           password: $DOCKERHUB_PASSWORD
         environment:
           TZ: "Europe/London"
+          PG_CONNECTION_STRING: postgres://postgres:postgres@localhost:5432/circle_test
+          TIMEOUT: 15000
+      - image: cimg/postgres:13.4-postgis
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_DB: circle_test
+          TZ: "Europe/London"
     working_directory: ~/repo
     steps:
       - checkout
@@ -17,7 +28,9 @@ jobs:
             - v1-deps-
       - run:
           name: install
-          command: npm install
+          command: |
+            npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+            npm install
       - save_cache:
           key: v1-deps-{{ checksum "package.json" }}
           paths:
@@ -62,7 +75,9 @@ jobs:
             - v1-deps-
       - run:
           name: install
-          command: npm install
+          command: |
+            npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+            npm install
       - save_cache:
           key: v1-deps-{{ checksum "package.json" }}
           paths:
