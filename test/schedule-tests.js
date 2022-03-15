@@ -6,17 +6,6 @@ const path = require('path')
 
 const scheduleKey = 'tymlyTest_twoSecondCatUpdates'
 
-async function countExecutions (model, stateMachineName) {
-  const res = await model.findCount({
-    where: {
-      stateMachineName: {
-        equals: stateMachineName
-      }
-    }
-  })
-  return res
-}
-
 describe('Tymly schedule tests', function () {
   this.timeout(60000) // 60 second timeout
 
@@ -84,7 +73,8 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].datetime).to.eql(null)
     expect(tasks[0].status).to.eql('STOPPED')
 
-    lastRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
+    const executions = await scheduleService.findScheduledExecutions(scheduleKey)
+    lastRunCount = executions.length
 
     // Waited 10 seconds and runs every 2 seconds so can be 5 or 6
     expect(lastRunCount).to.be.greaterThanOrEqual(5)
@@ -104,8 +94,8 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].datetime).to.eql(null)
     expect(tasks[0].status).to.eql('STOPPED')
 
-    const totalRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
-    expect(totalRunCount).to.eql(lastRunCount)
+    const executions = await scheduleService.findScheduledExecutions(scheduleKey)
+    expect(executions.length).to.eql(lastRunCount)
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(lastRunCount)
@@ -142,8 +132,8 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].scheduleType).to.eql('datetime')
     expect(tasks[0].status).to.eql('STARTED')
 
-    const totalRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
-    expect(totalRunCount).to.eql(lastRunCount)
+    const executions = await scheduleService.findScheduledExecutions(scheduleKey)
+    expect(executions.length).to.eql(lastRunCount)
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(lastRunCount)
@@ -156,8 +146,8 @@ describe('Tymly schedule tests', function () {
     expect(tasks.length).to.eql(1)
     expect(tasks[0].status).to.eql('STARTED')
 
-    const totalRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
-    expect(totalRunCount).to.eql(lastRunCount)
+    const executions = await scheduleService.findScheduledExecutions(scheduleKey)
+    expect(executions.length).to.eql(lastRunCount)
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(lastRunCount)
@@ -198,8 +188,8 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].interval).to.eql(null)
     expect(tasks[0].status).to.eql('STARTED')
 
-    const totalRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
-    expect(totalRunCount).to.eql(lastRunCount)
+    const executions = await scheduleService.findScheduledExecutions(scheduleKey)
+    expect(executions.length).to.eql(lastRunCount)
   })
 
   it('clean up data', async () => {
