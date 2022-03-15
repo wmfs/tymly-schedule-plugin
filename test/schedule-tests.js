@@ -183,7 +183,7 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].stateMachineName).to.eql('tymlyTest_sendCatUpdate')
     expect(tasks[0].scheduleType).to.eql('datetime')
     expect(tasks[0].interval).to.eql(null)
-    expect(tasks[0].status).to.eql('STARTED')
+    expect(tasks[0].status).to.eql('STOPPED')
 
     const executions = await scheduleService.findScheduledExecutions(scheduleKey)
     expect(executions.length).to.eql(lastRunCount)
