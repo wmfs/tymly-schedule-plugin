@@ -1,8 +1,8 @@
 {
-  "name": "@wmfs/tymly-cron-plugin",
+  "name": "@wmfs/tymly-schedule-plugin",
   "version": "0.0.0-semantically-released",
   "description": "Provides state machine scheduling for the Tymly framework",
-  "homepage": "https://github.com/wmfs/tymly-cron-plugin#readme",
+  "homepage": "https://github.com/wmfs/tymly-schedule-plugin#readme",
   "author": "West Midlands Fire Service",
   "keywords": [
     "tymly",
@@ -14,14 +14,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wmfs/tymly-cron-plugin.git"
+    "url": "https://github.com/wmfs/tymly-schedule-plugin.git"
   },
   "bugs": {
-    "url": "https://github.com/wmfs/tymly-cron-plugin/issues"
+    "url": "https://github.com/wmfs/tymly-schedule-plugin/issues"
   },
   "main": "./lib/index.js",
   "dependencies": {
-    "node-cron": "3.0.0",
     "node-schedule": "2.1.0"
   },
   "devDependencies": {
