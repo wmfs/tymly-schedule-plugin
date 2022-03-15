@@ -1,0 +1,13 @@
+{
+  "UpdateScheduledTask": {
+    "Type": "Task",
+    "Parameters": {
+      "key.$": "$.key",
+      "scheduleType.$": "$.scheduleType",
+      "datetime.$": "$.datetime",
+      "interval.$": "$.interval"
+    },
+    "Resource": "module:updateScheduledTask",
+    "End": true
+  }
+}
