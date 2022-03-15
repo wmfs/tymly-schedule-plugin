@@ -43,22 +43,6 @@
                   "value": "{{ data.startOnBoot ? 'Yes' : 'No' }}"
                 },
                 {
-                  "title": "Last ran start",
-                  "value": "{{ data.lastRanStart ? formatDate(data.lastRanStart, 'DD/MM/YYYY HH:mm') : 'N/A' }}"
-                },
-                {
-                  "title": "Last ran end",
-                  "value": "{{ data.lastRanEnd ? formatDate(data.lastRanEnd, 'DD/MM/YYYY HH:mm') : 'N/A' }}"
-                },
-                {
-                  "title": "Last ran execution name",
-                  "value": "{{ data.lastRanExecutionName }}"
-                },
-                {
-                  "title": "Total runs",
-                  "value": "{{ data.totalRunCount }}"
-                },
-                {
                   "title": "Status",
                   "value": "{{ data.status }}"
                 },

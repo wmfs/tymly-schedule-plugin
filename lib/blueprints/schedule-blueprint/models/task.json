@@ -35,20 +35,6 @@
     "startOnBoot": {
       "type": "boolean"
     },
-    "lastRanStart": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastRanEnd": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "lastRanExecutionName": {
-      "type": "string"
-    },
-    "totalRunCount": {
-      "type": "integer"
-    },
     "status": {
       "type": "string"
     }
