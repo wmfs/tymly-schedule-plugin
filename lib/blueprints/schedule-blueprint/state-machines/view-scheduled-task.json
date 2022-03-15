@@ -1,0 +1,39 @@
+{
+  "Comment": "View Scheduled State Machine",
+  "name": "View Scheduled State Machine",
+  "version": "1.0",
+  "categories": [
+    "schedule"
+  ],
+  "StartAt": "FindTask",
+  "States": {
+    "FindTask": {
+      "Type": "Task",
+      "InputPath": "$.key",
+      "Resource": "module:findingById",
+      "ResourceConfig": {
+        "modelId": "schedule_task"
+      },
+      "ResultPath": "$",
+      "Next": "View"
+    },
+    "View": {
+      "Type": "Task",
+      "Resource": "module:awaitingHumanInput",
+      "ResourceConfig": {
+        "uiType": "app",
+        "uiName": "schedule_viewScheduledTask",
+        "dataPath": "$"
+      },
+      "End": true
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "schedule_scheduleAdmin",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}

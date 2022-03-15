@@ -1,0 +1,69 @@
+{
+  "Comment": "View Scheduled State Machines",
+  "name": "View Scheduled State Machines",
+  "version": "1.0",
+  "categories": [
+    "schedule"
+  ],
+  "instigators": [
+    "user"
+  ],
+  "instigatorGroup": "form",
+  "StartAt": "FindTasks",
+  "States": {
+    "FindTasks": {
+      "Type": "Task",
+      "Resource": "module:finding",
+      "ResourceConfig": {
+        "modelId": "schedule_task"
+      },
+      "ResultPath": "$.tasks",
+      "Next": "AddTaskLaunches"
+    },
+    "AddTaskLaunches": {
+      "Type": "Map",
+      "ItemsPath": "$.tasks",
+      "Iterator": {
+        "StartAt": "AddLaunches",
+        "States": {
+          "AddLaunches": {
+            "Type": "Pass",
+            "Parameters": {
+              "launches": [
+                {
+                  "title": "View",
+                  "stateMachineName": "schedule_viewScheduledTask",
+                  "input": {
+                    "key.$": "$.key"
+                  }
+                }
+              ]
+            },
+            "ResultPath": "$",
+            "End": true
+          }
+        }
+      },
+      "ResultPath": "$.tasks",
+      "Next": "View"
+    },
+    "View": {
+      "Type": "Task",
+      "Resource": "module:awaitingHumanInput",
+      "ResourceConfig": {
+        "uiType": "app",
+        "uiName": "schedule_viewAllScheduledTasks",
+        "dataPath": "$"
+      },
+      "End": true
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "schedule_scheduleAdmin",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}

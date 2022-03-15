@@ -1,0 +1,79 @@
+{
+  "templateMeta": {
+    "name": "view-scheduled-task",
+    "title": "View Scheduled State Machine",
+    "category": "schedule",
+    "customMarginPx": 20
+  },
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "FactSet",
+      "showAllIfUndefined": true,
+      "facts": [
+        {
+          "title": "Key",
+          "value": "{{ data.key }}"
+        },
+        {
+          "title": "Schedule",
+          "value": "{{ data.scheduleType === 'datetime' ? data.datetime : data.interval }}"
+        },
+        {
+          "title": "State machine name",
+          "value": "{{ data.stateMachineName }}"
+        },
+        {
+          "title": "Input",
+          "value": "{{ JSON.stringify(data.input) }}"
+        },
+        {
+          "title": "Send response",
+          "value": "{{ data.sendResponse }}"
+        },
+        {
+          "title": "Start on boot?",
+          "value": "{{ data.startOnBoot ? 'Yes' : 'No' }}"
+        },
+        {
+          "title": "Last ran start",
+          "value": "{{ data.lastRanStart ? formatDate(data.lastRanStart, 'DD/MM/YYYY HH:mm') : 'N/A' }}"
+        },
+        {
+          "title": "Last ran end",
+          "value": "{{ data.lastRanEnd ? formatDate(data.lastRanEnd, 'DD/MM/YYYY HH:mm') : 'N/A' }}"
+        },
+        {
+          "title": "Last ran execution name",
+          "value": "{{ data.lastRanExecutionName }}"
+        },
+        {
+          "title": "Total runs",
+          "value": "{{ data.totalRunCount }}"
+        },
+        {
+          "title": "Status",
+          "value": "{{ data.status }}"
+        },
+        {
+          "title": "Created",
+          "value": "{{ data.created || '-' }}"
+        },
+        {
+          "title": "Created by",
+          "value": "{{ formatDate(data.createdBy, 'DD/MM/YYYY HH:mm') }}"
+        },
+        {
+          "title": "Modified",
+          "value": "{{ data.modified || '-' }}"
+        },
+        {
+          "title": "Modified by",
+          "value": "{{ formatDate(data.modifiedBy, 'DD/MM/YYYY HH:mm') }}"
+        }
+      ]
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}

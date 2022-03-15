@@ -1,0 +1,41 @@
+{
+  "templateMeta": {
+    "name": "view-scheduled-tasks",
+    "title": "View Scheduled State Machines",
+    "category": "schedule",
+    "customMarginPx": 20
+  },
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "MarkupTable",
+      "title": "Scheduled State Machines",
+      "arrayPath": "data.tasks",
+      "clickToLaunch": true,
+      "columns": [
+        {
+          "title": "Key",
+          "value": "{{ item.key }}"
+        },
+        {
+          "title": "Schedule",
+          "value": "{{ item.scheduleType === 'datetime' ? item.datetime : item.interval }}"
+        },
+        {
+          "title": "State machine name",
+          "value": "{{ item.stateMachineName }}"
+        },
+        {
+          "title": "Total runs",
+          "value": "{{ item.totalRunCount }}"
+        },
+        {
+          "title": "Status",
+          "value": "{{ item.status }}"
+        }
+      ]
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}
