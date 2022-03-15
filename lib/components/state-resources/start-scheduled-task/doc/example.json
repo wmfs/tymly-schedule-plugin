@@ -1,0 +1,8 @@
+{
+  "StartScheduledTask": {
+    "Type": "Task",
+    "InputPath": "$.key",
+    "Resource": "module:startScheduledTask",
+    "End": true
+  }
+}

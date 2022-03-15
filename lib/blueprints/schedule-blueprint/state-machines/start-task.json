@@ -1,0 +1,36 @@
+{
+  "Comment": "Start Scheduled State Machine",
+  "name": "Start Scheduled State Machine",
+  "version": "1.0",
+  "categories": [
+    "schedule"
+  ],
+  "StartAt": "StartScheduledTask",
+  "States": {
+    "StartScheduledTask": {
+      "Type": "Task",
+      "InputPath": "$.key",
+      "Resource": "module:startScheduledTask",
+      "Next": "View"
+    },
+    "View": {
+      "Type": "Task",
+      "Parameters": {
+        "key.$": "$.key"
+      },
+      "Resource": "module:runStateMachine",
+      "ResourceConfig": {
+        "stateMachine": "schedule_viewScheduledTask_1_0"
+      },
+      "End": true
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "schedule_scheduleAdmin",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}
