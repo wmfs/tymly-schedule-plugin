@@ -19,7 +19,6 @@ describe('Tymly schedule tests', function () {
   let tymlyService
   let scheduleService
   let catStatsModel
-  let executionsModel
   let taskModel
   let client
 
@@ -43,7 +42,6 @@ describe('Tymly schedule tests', function () {
     scheduleService = tymlyServices.schedule
     taskModel = tymlyServices.storage.models.schedule_task
     catStatsModel = tymlyServices.storage.models.tymlyTest_catStats
-    executionsModel = tymlyServices.storage.models.tymly_execution
     client = tymlyServices.storage.client
 
     const catStats = await catStatsModel.find({})
@@ -175,7 +173,6 @@ describe('Tymly schedule tests', function () {
     scheduleService = tymlyServices.schedule
     taskModel = tymlyServices.storage.models.schedule_task
     catStatsModel = tymlyServices.storage.models.tymlyTest_catStats
-    executionsModel = tymlyServices.storage.models.tymly_execution
     client = tymlyServices.storage.client
   })
 
