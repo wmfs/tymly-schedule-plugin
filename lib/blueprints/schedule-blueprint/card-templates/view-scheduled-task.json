@@ -110,6 +110,14 @@
                   "input": {
                     "key": "$.key"
                   }
+                },
+                {
+                  "type": "Action.PushCard",
+                  "title": "Update state machine config",
+                  "stateMachineName": "schedule_updateStateMachineConfig_1_0",
+                  "input": {
+                    "key": "$.key"
+                  }
                 }
               ]
             }
