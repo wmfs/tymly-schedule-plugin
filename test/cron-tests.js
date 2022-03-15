@@ -10,7 +10,7 @@ describe('Cron tests', function () {
   this.timeout(60000) // 60 second timeout
 
   let tymlyService
-  let cronService
+  let scheduleService
   // let statebox
   let catStatsModel
   // let executionsModel
@@ -31,7 +31,7 @@ describe('Cron tests', function () {
     )
 
     tymlyService = tymlyServices.tymly
-    cronService = tymlyServices.cron
+    scheduleService = tymlyServices.schedule
     // statebox = tymlyServices.statebox
     taskModel = tymlyServices.storage.models.schedule_task
     catStatsModel = tymlyServices.storage.models.tymlyTest_catStats
@@ -49,7 +49,7 @@ describe('Cron tests', function () {
   it('wait 10 seconds, let the updates run for a bit', done => setTimeout(done, 10000))
 
   it('stop cat updates', () => {
-    cronService.stopTask(scheduleKey)
+    scheduleService.stopTask(scheduleKey)
   })
 
   it('check the state machine has run multiple times', async () => {
@@ -84,7 +84,7 @@ describe('Cron tests', function () {
     const datetime = new Date()
     datetime.setSeconds(datetime.getSeconds() + 10)
 
-    await cronService.stopAndUpdateTaskSchedule(
+    await scheduleService.stopAndUpdateTaskSchedule(
       scheduleKey,
       {
         year: datetime.getFullYear(),
@@ -96,7 +96,7 @@ describe('Cron tests', function () {
       }
     )
 
-    cronService.startTask(scheduleKey)
+    scheduleService.startTask(scheduleKey)
   })
 
   it('wait 15 seconds', done => setTimeout(done, 15000))

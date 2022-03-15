@@ -1,7 +1,7 @@
 {
-  "name": "cron",
+  "name": "schedule-plugin",
   "version": "1.28.0",
-  "label": "Cron",
+  "label": "Tymly Schedule Plugin",
   "author": "WMFS",
   "organisation": "West Midlands Fire Service",
   "description": "Provides state machine scheduling for the Tymly framework",
