@@ -6,7 +6,7 @@ const path = require('path')
 
 const scheduleKey = 'tymlyTest_twoSecondCatUpdates'
 
-describe('Cron tests', function () {
+describe('Tymly schedule tests', function () {
   this.timeout(60000) // 60 second timeout
 
   let tymlyService
@@ -44,17 +44,25 @@ describe('Cron tests', function () {
   it('check the task has persisted to the database', async () => {
     const tasks = await taskModel.find({})
     expect(tasks.length).to.eql(1)
+    expect(tasks[0].scheduleType).to.eql('interval')
+    expect(tasks[0].interval).to.eql('*/2 * * * * *')
+    expect(tasks[0].datetime).to.eql(null)
+    expect(tasks[0].status).to.eql('STARTED')
   })
 
   it('wait 10 seconds, let the updates run for a bit', done => setTimeout(done, 10000))
 
-  it('stop cat updates', () => {
-    scheduleService.stopTask(scheduleKey)
+  it('stop cat updates', async () => {
+    await scheduleService.stopTask(scheduleKey)
   })
 
   it('check the state machine has run multiple times', async () => {
     const tasks = await taskModel.find({})
     expect(tasks.length).to.eql(1)
+    expect(tasks[0].scheduleType).to.eql('interval')
+    expect(tasks[0].interval).to.eql('*/2 * * * * *')
+    expect(tasks[0].datetime).to.eql(null)
+    expect(tasks[0].status).to.eql('STOPPED')
 
     const { totalRunCount } = tasks[0]
 
@@ -73,6 +81,10 @@ describe('Cron tests', function () {
   it('ensure scheduled task has not run again', async () => {
     const tasks = await taskModel.find({})
     expect(tasks.length).to.eql(1)
+    expect(tasks[0].scheduleType).to.eql('interval')
+    expect(tasks[0].interval).to.eql('*/2 * * * * *')
+    expect(tasks[0].datetime).to.eql(null)
+    expect(tasks[0].status).to.eql('STOPPED')
 
     expect(tasks[0].totalRunCount).to.eql(lastRunCount)
 
@@ -96,7 +108,7 @@ describe('Cron tests', function () {
       }
     )
 
-    scheduleService.startTask(scheduleKey)
+    await scheduleService.startTask(scheduleKey)
   })
 
   it('wait 15 seconds', done => setTimeout(done, 15000))
@@ -106,10 +118,11 @@ describe('Cron tests', function () {
 
     const tasks = await taskModel.find({})
     expect(tasks.length).to.eql(1)
-    expect(tasks[0].rule).to.eql(null)
+    expect(tasks[0].interval).to.eql(null)
     expect(tasks[0].datetime).to.not.eql(null)
     expect(tasks[0].scheduleType).to.eql('datetime')
     expect(tasks[0].totalRunCount).to.eql(lastRunCount)
+    expect(tasks[0].status).to.eql('STARTED')
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(lastRunCount)
@@ -120,6 +133,7 @@ describe('Cron tests', function () {
   it('ensure scheduled task has not run again', async () => {
     const tasks = await taskModel.find({})
     expect(tasks.length).to.eql(1)
+    expect(tasks[0].status).to.eql('STARTED')
 
     expect(tasks[0].totalRunCount).to.eql(lastRunCount)
 
@@ -144,5 +158,10 @@ describe('Cron tests', function () {
     )
   })
 
-  it('check blueprint tasks not overwritten updates', () => {})
+  it('check blueprint tasks not overwritten updates', async () => {
+    const tasks = await taskModel.find({})
+    expect(tasks.length).to.eql(1)
+    expect(tasks[0].scheduleType).to.eql('datetime')
+    expect(tasks[0].status).to.eql('STARTED')
+  })
 })

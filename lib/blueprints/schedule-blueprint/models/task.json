@@ -21,11 +21,11 @@
     "scheduleType": {
       "type": "string",
       "enum": [
-        "rule",
+        "interval",
         "datetime"
       ]
     },
-    "rule": {
+    "interval": {
       "type": "string"
     },
     "datetime": {
@@ -48,6 +48,9 @@
     },
     "totalRunCount": {
       "type": "integer"
+    },
+    "status": {
+      "type": "string"
     }
   }
 }
