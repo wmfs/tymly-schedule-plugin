@@ -112,6 +112,31 @@
           ]
         }
       ]
+    },
+    {
+      "title": "State machine executions",
+      "type": "Table",
+      "arrayPath": "data.executions",
+      "columns": [
+        {
+          "title": "Execution name",
+          "field": "executionName"
+        },
+        {
+          "title": "Status",
+          "field": "status"
+        },
+        {
+          "title": "Created",
+          "field": "created",
+          "format": "formatDate(val, 'DD/MM/YYYY HH:mm')"
+        },
+        {
+          "title": "Modified",
+          "field": "modified",
+          "format": "formatDate(val, 'DD/MM/YYYY HH:mm')"
+        }
+      ]
     }
   ],
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
