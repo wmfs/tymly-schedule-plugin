@@ -1,0 +1,46 @@
+{
+  "Comment": "Set up a Scheduled State Machine",
+  "name": "Set up a Scheduled State Machine",
+  "version": "1.0",
+  "categories": [
+    "schedule"
+  ],
+  "instigators": [
+    "user"
+  ],
+  "instigatorGroup": "form",
+  "StartAt": "View",
+  "States": {
+    "View": {
+      "Type": "Task",
+      "Resource": "module:awaitingHumanInput",
+      "ResourceConfig": {
+        "uiType": "app",
+        "uiName": "schedule_createScheduledTask",
+        "dataPath": "$"
+      },
+      "Next": "GenerateKey"
+    },
+    "GenerateKey": {
+      "Type": "Task",
+      "InputPath": "$.name",
+      "Resource": "function:schedule_generateKey",
+      "ResultPath": "$",
+      "Next": "CreateScheduledTask"
+    },
+    "CreateScheduledTask": {
+      "Type": "Task",
+      "InputPath": "$.key",
+      "Resource": "module:createScheduledTask",
+      "End": true
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "schedule_scheduleAdmin",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}
