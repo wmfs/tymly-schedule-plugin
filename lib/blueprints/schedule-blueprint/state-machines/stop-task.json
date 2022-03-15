@@ -1,0 +1,36 @@
+{
+  "Comment": "Stop Scheduled State Machine",
+  "name": "Stop Scheduled State Machine",
+  "version": "1.0",
+  "categories": [
+    "schedule"
+  ],
+  "StartAt": "StopScheduledTask",
+  "States": {
+    "StopScheduledTask": {
+      "Type": "Task",
+      "InputPath": "$.key",
+      "Resource": "module:stopScheduledTask",
+      "Next": "View"
+    },
+    "View": {
+      "Type": "Task",
+      "Parameters": {
+        "key.$": "$.key"
+      },
+      "Resource": "module:runStateMachine",
+      "ResourceConfig": {
+        "stateMachine": "schedule_viewScheduledTask_1_0"
+      },
+      "End": true
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "schedule_scheduleAdmin",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}
