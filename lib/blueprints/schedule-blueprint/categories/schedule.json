@@ -1,0 +1,8 @@
+{
+  "label": "Schedule",
+  "description": "Scheduled state machines",
+  "style": {
+    "icon": "schedule",
+    "backgroundColor": "#008800"
+  }
+}
