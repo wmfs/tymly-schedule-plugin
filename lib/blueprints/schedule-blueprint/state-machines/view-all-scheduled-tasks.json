@@ -8,7 +8,7 @@
   "instigators": [
     "user"
   ],
-  "instigatorGroup": "form",
+  "instigatorGroup": "app",
   "StartAt": "FindTasks",
   "States": {
     "FindTasks": {
