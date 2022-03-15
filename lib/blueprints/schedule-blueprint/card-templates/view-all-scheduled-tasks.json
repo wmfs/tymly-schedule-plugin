@@ -26,10 +26,6 @@
           "value": "{{ item.stateMachineName }}"
         },
         {
-          "title": "Total runs",
-          "value": "{{ item.totalRunCount }}"
-        },
-        {
           "title": "Status",
           "value": "{{ item.status }}"
         }

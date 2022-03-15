@@ -6,6 +6,17 @@ const path = require('path')
 
 const scheduleKey = 'tymlyTest_twoSecondCatUpdates'
 
+async function countExecutions (model, stateMachineName) {
+  const res = await model.findCount({
+    where: {
+      stateMachineName: {
+        equals: stateMachineName
+      }
+    }
+  })
+  return res
+}
+
 describe('Tymly schedule tests', function () {
   this.timeout(60000) // 60 second timeout
 
@@ -18,9 +29,8 @@ describe('Tymly schedule tests', function () {
 
   let tymlyService
   let scheduleService
-  // let statebox
   let catStatsModel
-  // let executionsModel
+  let executionsModel
   let taskModel
   let client
 
@@ -34,17 +44,17 @@ describe('Tymly schedule tests', function () {
         ],
         pluginPaths: [
           path.resolve(__dirname, '..'),
-          require.resolve('@wmfs/tymly-pg-plugin')
+          require.resolve('@wmfs/tymly-pg-plugin'),
+          require.resolve('@wmfs/tymly-test-helpers/plugins/mock-users-plugin')
         ]
       }
     )
 
     tymlyService = tymlyServices.tymly
     scheduleService = tymlyServices.schedule
-    // statebox = tymlyServices.statebox
     taskModel = tymlyServices.storage.models.schedule_task
     catStatsModel = tymlyServices.storage.models.tymlyTest_catStats
-    // executionsModel = tymlyServices.storage.models.tymly_execution
+    executionsModel = tymlyServices.storage.models.tymly_execution
     client = tymlyServices.storage.client
 
     const catStats = await catStatsModel.find({})
@@ -74,9 +84,7 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].datetime).to.eql(null)
     expect(tasks[0].status).to.eql('STOPPED')
 
-    const { totalRunCount } = tasks[0]
-
-    lastRunCount = totalRunCount
+    lastRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
 
     // Waited 10 seconds and runs every 2 seconds so can be 5 or 6
     expect(lastRunCount).to.be.greaterThanOrEqual(5)
@@ -96,7 +104,8 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].datetime).to.eql(null)
     expect(tasks[0].status).to.eql('STOPPED')
 
-    expect(tasks[0].totalRunCount).to.eql(lastRunCount)
+    const totalRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
+    expect(totalRunCount).to.eql(lastRunCount)
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(lastRunCount)
@@ -131,8 +140,10 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].interval).to.eql(null)
     expect(tasks[0].datetime).to.not.eql(null)
     expect(tasks[0].scheduleType).to.eql('datetime')
-    expect(tasks[0].totalRunCount).to.eql(lastRunCount)
     expect(tasks[0].status).to.eql('STARTED')
+
+    const totalRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
+    expect(totalRunCount).to.eql(lastRunCount)
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(lastRunCount)
@@ -145,7 +156,8 @@ describe('Tymly schedule tests', function () {
     expect(tasks.length).to.eql(1)
     expect(tasks[0].status).to.eql('STARTED')
 
-    expect(tasks[0].totalRunCount).to.eql(lastRunCount)
+    const totalRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
+    expect(totalRunCount).to.eql(lastRunCount)
 
     const catStats = await catStatsModel.find({})
     expect(catStats.length).to.eql(lastRunCount)
@@ -163,7 +175,8 @@ describe('Tymly schedule tests', function () {
         ],
         pluginPaths: [
           path.resolve(__dirname, '..'),
-          require.resolve('@wmfs/tymly-pg-plugin')
+          require.resolve('@wmfs/tymly-pg-plugin'),
+          require.resolve('@wmfs/tymly-test-helpers/plugins/mock-users-plugin')
         ]
       }
     )
@@ -172,6 +185,7 @@ describe('Tymly schedule tests', function () {
     scheduleService = tymlyServices.schedule
     taskModel = tymlyServices.storage.models.schedule_task
     catStatsModel = tymlyServices.storage.models.tymlyTest_catStats
+    executionsModel = tymlyServices.storage.models.tymly_execution
     client = tymlyServices.storage.client
   })
 
@@ -183,7 +197,9 @@ describe('Tymly schedule tests', function () {
     expect(tasks[0].scheduleType).to.eql('datetime')
     expect(tasks[0].interval).to.eql(null)
     expect(tasks[0].status).to.eql('STARTED')
-    expect(tasks[0].totalRunCount).to.eql(lastRunCount)
+
+    const totalRunCount = await countExecutions(executionsModel, tasks[0].stateMachineName)
+    expect(totalRunCount).to.eql(lastRunCount)
   })
 
   it('clean up data', async () => {
