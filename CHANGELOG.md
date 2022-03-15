@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.0.0...v1.0.1) (2022-03-15)
+
+
+### 🐛 Bug Fixes
+
+* handle no blueprint components ([1d05697](https://github.com/wmfs/tymly-schedule-plugin/commit/1d05697563434dd01274121b5db59db3ec0e39ae))
+
 # 1.0.0 (2022-03-15)
 
 
