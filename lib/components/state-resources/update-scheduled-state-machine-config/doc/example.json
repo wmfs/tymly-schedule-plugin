@@ -1,0 +1,12 @@
+{
+  "UpdateScheduledStateMachineConfig": {
+    "Type": "Task",
+    "Parameters": {
+      "key.$": "$.key",
+      "stateMachineName.$": "$.stateMachineName",
+      "input.$": "$.input"
+    },
+    "Resource": "module:updateScheduledStateMachineConfig",
+    "End": true
+  }
+}
