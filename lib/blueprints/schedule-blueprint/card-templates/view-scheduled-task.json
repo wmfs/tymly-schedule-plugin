@@ -2,11 +2,23 @@
   "templateMeta": {
     "name": "view-scheduled-task",
     "title": "View Scheduled State Machine",
-    "category": "schedule",
-    "customMarginPx": 20
+    "category": "schedule"
   },
   "type": "AdaptiveCard",
   "body": [
+    {
+      "type": "Container",
+      "color": "accent",
+      "spacing": "none",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "{{ data.key }}",
+          "weight": "bolder",
+          "spacing": "none"
+        }
+      ]
+    },
     {
       "type": "ColumnSet",
       "columns": [
@@ -87,6 +99,14 @@
                   "type": "Action.PushCard",
                   "title": "Start task",
                   "stateMachineName": "schedule_startTask_1_0",
+                  "input": {
+                    "key": "$.key"
+                  }
+                },
+                {
+                  "type": "Action.PushCard",
+                  "title": "Update schedule",
+                  "stateMachineName": "schedule_updateScheduledTask_1_0",
                   "input": {
                     "key": "$.key"
                   }

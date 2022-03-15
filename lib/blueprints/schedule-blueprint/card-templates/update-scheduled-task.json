@@ -1,0 +1,84 @@
+{
+  "templateMeta": {
+    "name": "update-scheduled-task",
+    "title": "Update Scheduled State Machine",
+    "category": "schedule"
+  },
+  "hooks": {
+    "afterSubmit": {
+      "actions": [
+        {
+          "type": "Action.PushCard",
+          "stateMachineName": "schedule_viewScheduledTask_1_0",
+          "input": {
+            "key": "$.key"
+          }
+        }
+      ]
+    }
+  },
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "Container",
+      "color": "accent",
+      "spacing": "none",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "{{ data.key }}",
+          "weight": "bolder",
+          "spacing": "none"
+        }
+      ]
+    },
+    {
+      "id": "scheduleType",
+      "type": "Input.ChoiceSet",
+      "title": "What type of schedule?",
+      "choices": [
+        {
+          "title": "Interval",
+          "value": "interval"
+        },
+        {
+          "title": "Date/time",
+          "value": "datetime"
+        }
+      ],
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "showWhen": "data.scheduleType === 'datetime'",
+      "id": "datetime",
+      "type": "Input.DateTime",
+      "title": "Date/time",
+      "validation": {
+        "requiredIf": "data.scheduleType === 'datetime'"
+      }
+    },
+    {
+      "showWhen": "data.scheduleType === 'interval'",
+      "id": "interval",
+      "type": "Input.Text",
+      "title": "Interval",
+      "validation": {
+        "requiredIf": "data.scheduleType === 'interval'"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Cancel",
+      "title": "Cancel"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
+}

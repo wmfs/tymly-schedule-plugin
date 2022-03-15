@@ -2,8 +2,7 @@
   "templateMeta": {
     "name": "view-scheduled-tasks",
     "title": "View Scheduled State Machines",
-    "category": "schedule",
-    "customMarginPx": 20
+    "category": "schedule"
   },
   "type": "AdaptiveCard",
   "body": [
