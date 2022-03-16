@@ -95,7 +95,7 @@
                   }
                 },
                 {
-                  "showWhen": "data.status === 'STOPPED'",
+                  "showWhen": "data.status !== 'STARTED'",
                   "type": "Action.PushCard",
                   "title": "Start task",
                   "stateMachineName": "schedule_startTask_1_0",
@@ -105,16 +105,8 @@
                 },
                 {
                   "type": "Action.PushCard",
-                  "title": "Update schedule",
-                  "stateMachineName": "schedule_updateScheduledTask_1_0",
-                  "input": {
-                    "key": "$.key"
-                  }
-                },
-                {
-                  "type": "Action.PushCard",
-                  "title": "Update state machine config",
-                  "stateMachineName": "schedule_updateStateMachineConfig_1_0",
+                  "title": "Modify schedule",
+                  "stateMachineName": "schedule_modifyScheduledTask_1_0",
                   "input": {
                     "key": "$.key"
                   }
