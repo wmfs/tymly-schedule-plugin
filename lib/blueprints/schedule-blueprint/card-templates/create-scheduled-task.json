@@ -1,7 +1,7 @@
 {
   "templateMeta": {
     "name": "create-scheduled-task",
-    "title": "Set up a Scheduled State Machine",
+    "title": "Configure a Scheduled State Machine",
     "category": "schedule"
   },
   "hooks": {
@@ -20,12 +20,66 @@
   "type": "AdaptiveCard",
   "body": [
     {
+      "showWhen": "data.editing !== true",
       "id": "name",
       "type": "Input.Text",
       "title": "Schedule name",
       "validation": {
+        "requiredIf": "data.editing !== true"
+      }
+    },
+    {
+      "id": "scheduleType",
+      "type": "Input.ChoiceSet",
+      "title": "What type of schedule?",
+      "choices": [
+        {
+          "title": "Interval",
+          "value": "interval"
+        },
+        {
+          "title": "Date/time",
+          "value": "datetime"
+        }
+      ],
+      "validation": {
         "required": true
       }
+    },
+    {
+      "showWhen": "data.scheduleType === 'interval'",
+      "id": "interval",
+      "type": "Input.Text",
+      "title": "Interval",
+      "validation": {
+        "requiredIf": "data.scheduleType === 'interval'"
+      }
+    },
+    {
+      "showWhen": "data.scheduleType === 'datetime'",
+      "id": "datetime",
+      "type": "Input.DateTime",
+      "title": "Date/time",
+      "validation": {
+        "requiredIf": "data.scheduleType === 'datetime'"
+      }
+    },
+    {
+      "id": "stateMachineName",
+      "type": "Input.ChoiceSet",
+      "title": "Which state machine?",
+      "filter": true,
+      "choicesPath": "data.availableStateMachines",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "id": "inputStr",
+      "type": "Input.Text",
+      "title": "Input",
+      "isMultiline": true,
+      "value": "{}"
     }
   ],
   "actions": [

@@ -1,12 +1,20 @@
 {
-  "Comment": "Update Scheduled State Machine",
-  "name": "Update Scheduled State Machine",
+  "Comment": "Modify a Scheduled State Machine",
+  "name": "Modify a Scheduled State Machine",
   "version": "1.0",
   "categories": [
     "schedule"
   ],
-  "StartAt": "FindTask",
+  "StartAt": "SetAsEditing",
   "States": {
+    "SetAsEditing": {
+      "Type": "Pass",
+      "Result": {
+        "editing": true
+      },
+      "ResultPath": "$",
+      "Next": "FindTask"
+    },
     "FindTask": {
       "Type": "Task",
       "InputPath": "$.key",
@@ -21,13 +29,6 @@
       "Type": "Task",
       "Resource": "function:schedule_getAvailableStateMachines",
       "ResultPath": "$",
-      "Next": "StringifyInput"
-    },
-    "StringifyInput": {
-      "Type": "Pass",
-      "ResultSelector": {
-        "inputStr.$": "States.JsonToString($.input)"
-      },
       "Next": "View"
     },
     "View": {
@@ -35,9 +36,20 @@
       "Resource": "module:awaitingHumanInput",
       "ResourceConfig": {
         "uiType": "app",
-        "uiName": "schedule_updateStateMachineConfig",
+        "uiName": "schedule_createScheduledTask",
         "dataPath": "$"
       },
+      "Next": "UpdateScheduledTask"
+    },
+    "UpdateScheduledTask": {
+      "Type": "Task",
+      "Parameters": {
+        "key.$": "$.key",
+        "scheduleType.$": "$.scheduleType",
+        "datetime.$": "$.datetime",
+        "interval.$": "$.interval"
+      },
+      "Resource": "module:updateScheduledTask",
       "Next": "UpdateScheduledStateMachineConfig"
     },
     "UpdateScheduledStateMachineConfig": {

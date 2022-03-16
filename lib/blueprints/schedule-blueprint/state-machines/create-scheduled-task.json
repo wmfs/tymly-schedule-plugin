@@ -9,8 +9,21 @@
     "user"
   ],
   "instigatorGroup": "form",
-  "StartAt": "View",
+  "StartAt": "GetStateMachines",
   "States": {
+    "GetStateMachines": {
+      "Type": "Task",
+      "Resource": "function:schedule_getAvailableStateMachines",
+      "ResultPath": "$",
+      "Next": "DefaultInput"
+    },
+    "DefaultInput": {
+      "Type": "Pass",
+      "ResultSelector": {
+        "inputStr": "{}"
+      },
+      "Next": "View"
+    },
     "View": {
       "Type": "Task",
       "Resource": "module:awaitingHumanInput",
@@ -30,7 +43,14 @@
     },
     "CreateScheduledTask": {
       "Type": "Task",
-      "InputPath": "$.key",
+      "Parameters": {
+        "key.$": "$.key",
+        "scheduleType.$": "$.scheduleType",
+        "datetime.$": "$.datetime",
+        "interval.$": "$.interval",
+        "stateMachineName.$": "$.stateMachineName",
+        "input.$": "$.inputStr"
+      },
       "Resource": "module:createScheduledTask",
       "End": true
     }
