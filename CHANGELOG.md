@@ -1,3 +1,29 @@
+# [1.1.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.0.1...v1.1.0) (2022-03-16)
+
+
+### ✨ Features
+
+* ability to create/modify tasks from ui ([b7d56c5](https://github.com/wmfs/tymly-schedule-plugin/commit/b7d56c5e44609d4b2b14dbdc4e13a6c91f784eee))
+* admin tools to create scheduled task ([b0e6ddc](https://github.com/wmfs/tymly-schedule-plugin/commit/b0e6ddc5325ace6332516275893471b39703c1ba))
+* admin tools to start/stop tasks ([106f5fa](https://github.com/wmfs/tymly-schedule-plugin/commit/106f5fa7daedca13030b49fac473a891c5c6d9e1))
+* admin tools to update schedule of state machine ([c6df466](https://github.com/wmfs/tymly-schedule-plugin/commit/c6df4669823e002916d4b86a0458e4e1d57ab45d))
+* admin tools to update state machine config ([e26928a](https://github.com/wmfs/tymly-schedule-plugin/commit/e26928a276c1783fb92785eb2355570dd01f32ac))
+* admin tools to view all and view specific tasks ([b9f80c8](https://github.com/wmfs/tymly-schedule-plugin/commit/b9f80c89077115ae2c783c0b03e8de322111319f))
+* admin tools to view scheduled executions ([89b9094](https://github.com/wmfs/tymly-schedule-plugin/commit/89b90941de1b48a14896043ec3710df2c2440949))
+* remove last ran start/end and total run count, as these can be found from executions ([d6c673b](https://github.com/wmfs/tymly-schedule-plugin/commit/d6c673b926654c564d08f6de1b5f22bcf61b3783))
+
+
+### 🐛 Bug Fixes
+
+* issue with finding scheduled executions ([b198bd1](https://github.com/wmfs/tymly-schedule-plugin/commit/b198bd1bf49ffb517229309eadaf7fdaed9f1ff7))
+* use function from service to get executions ([b9082bc](https://github.com/wmfs/tymly-schedule-plugin/commit/b9082bc49ccdbd39c1316c786f83efddd7396a7d))
+
+
+### 🚨 Tests
+
+* fix status after re-boot with datetime schedule in past ([e4e9cba](https://github.com/wmfs/tymly-schedule-plugin/commit/e4e9cba84fbdaf91838e880b7dacda4659e60119))
+* remove unused executions model ([92e888d](https://github.com/wmfs/tymly-schedule-plugin/commit/92e888d266803dac531a27f0c8d74ff6d6b22e52))
+
 ## [1.0.1](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.0.0...v1.0.1) (2022-03-15)
 
 
