@@ -22,7 +22,8 @@
   },
   "main": "./lib/index.js",
   "dependencies": {
-    "node-schedule": "2.1.0"
+    "node-schedule": "2.1.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
