@@ -1,3 +1,26 @@
+# [1.2.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.1.0...v1.2.0) (2022-07-28)
+
+
+### ✨ Features
+
+* updates for scheduled sending [sc-14535] ([8703224](https://github.com/wmfs/tymly-schedule-plugin/commit/8703224e3c1cf8a0ba93be3027eafa64841cfc4f))
+
+
+### 🐛 Bug Fixes
+
+* update unit tests for datetime [sc-14535] ([155d3a5](https://github.com/wmfs/tymly-schedule-plugin/commit/155d3a544f6dcb9cf22c95713b5bd62a6a2d45c9))
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-pg-plugin to v1.268.1 ([0bd7069](https://github.com/wmfs/tymly-schedule-plugin/commit/0bd7069404eadf1d08e3824ed1ce9d1ff6816cfc))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-test-helpers to v1.17.0 ([e9202a6](https://github.com/wmfs/tymly-schedule-plugin/commit/e9202a6cd86dc8429dfa1d077bccdef985231d85))
+
+
+### ♻️ Chores
+
+* enable tymly sync ([58ce844](https://github.com/wmfs/tymly-schedule-plugin/commit/58ce844d32d72c4be3c7cd19d230a99b6b53db6f))
+
 # [1.1.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.0.1...v1.1.0) (2022-03-16)
 
 
