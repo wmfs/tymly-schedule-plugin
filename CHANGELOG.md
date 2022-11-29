@@ -1,3 +1,33 @@
+# [1.3.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.2.0...v1.3.0) (2022-11-29)
+
+
+### 🐛 Bug Fixes
+
+* remove hard coded DST change on hour, needs fixing [sc-18164] ([c1fef58](https://github.com/wmfs/tymly-schedule-plugin/commit/c1fef581559f65be09629a5876eb468286f94bb3))
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly to v1.240.0 ([58d51e3](https://github.com/wmfs/tymly-schedule-plugin/commit/58d51e3ea1ef81db1b1e3a352cb892c92f88c5a1))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly to v1.242.0 ([bd88c73](https://github.com/wmfs/tymly-schedule-plugin/commit/bd88c734c2382fd49625d2fc2b7a66f11371664d))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-pg-plugin to v1.269.0 ([8f7cb67](https://github.com/wmfs/tymly-schedule-plugin/commit/8f7cb67241a546f3a52f034b89bc22e054a24e9c))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-test-helpers to v1.21.0 ([46ce1f7](https://github.com/wmfs/tymly-schedule-plugin/commit/46ce1f71ed2ecbe7b4f90ab51de33d909e625abd))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-test-helpers to v1.22.0 ([888468d](https://github.com/wmfs/tymly-schedule-plugin/commit/888468d7c3a4cca577e8cddbd0c4503b3962405c))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-test-helpers to v1.22.1 ([3e8b7e5](https://github.com/wmfs/tymly-schedule-plugin/commit/3e8b7e58422ba056313980952d9396c492ebb083))
+* **deps-dev:** update dependency mocha to v10 ([82a4c29](https://github.com/wmfs/tymly-schedule-plugin/commit/82a4c29e66b5f7c6bc38eaca1c228f49d7f8bb9d))
+* **deps-dev:** update dependency mocha to v10.1.0 ([9fc4db7](https://github.com/wmfs/tymly-schedule-plugin/commit/9fc4db78771c4c71af6bdbbffce77495da0d544b))
+* **deps-dev:** update dependency moment to v2.29.4 [security] ([ae28d1f](https://github.com/wmfs/tymly-schedule-plugin/commit/ae28d1f977a3a5f0c6d0d39f2e0ade89a6dfbc61))
+* **deps-dev:** update dependency semantic-release to v19.0.3 [security] ([bc3e970](https://github.com/wmfs/tymly-schedule-plugin/commit/bc3e9700a0994100cd5310accb8e42c7eeec4ff0))
+* **deps-dev:** update dependency semantic-release to v19.0.4 ([abd04d4](https://github.com/wmfs/tymly-schedule-plugin/commit/abd04d490eda0e2c8c07c9c5b45ea30fd620a95e))
+* **deps-dev:** update dependency semantic-release to v19.0.5 ([7acf181](https://github.com/wmfs/tymly-schedule-plugin/commit/7acf1812163a955b95245b87925e9560742c7f06))
+* **deps-dev:** update dependency standard to v17 ([3a8a3c8](https://github.com/wmfs/tymly-schedule-plugin/commit/3a8a3c8fa8e42c00ac7c403c6ec21a36b9fa6aca))
+* **deps:** update dependency uuid to v9 ([a9a803e](https://github.com/wmfs/tymly-schedule-plugin/commit/a9a803ebd0b6e40e5605b40c36e67109fdf31422))
+
+
+### 🚨 Tests
+
+* remove hard coded DST change on hour, needs fixing [sc-18164] ([327ab77](https://github.com/wmfs/tymly-schedule-plugin/commit/327ab779f8b8a9c122adaad89fba6224db6673ca))
+
 # [1.2.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.1.0...v1.2.0) (2022-07-28)
 
 
