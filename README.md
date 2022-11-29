@@ -8,7 +8,7 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wmfs/tymly-schedule-plugin/blob/master/LICENSE)
 
-> Provides state machine scheduling for the Tymly framework
+> Provides state machine scheduling for the Tymly framework 
 
 ## <a name="install"></a>Install
 ```bash
