@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.3.0...v1.3.1) (2022-11-29)
+
+
+### 🐛 Bug Fixes
+
+* changed access to public & force build ([0a5ae10](https://github.com/wmfs/tymly-schedule-plugin/commit/0a5ae10bf9acc93ebf42fbeb447bc2e9a38b543c))
+
 # [1.3.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.2.0...v1.3.0) (2022-11-29)
 
 
