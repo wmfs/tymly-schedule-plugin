@@ -2,6 +2,7 @@
 
 const expect = require('chai').expect
 
+const moment = require('moment')
 const ruleToDatetime = require('../lib/components/services/schedule/utils/rule-to-datetime')
 const datetimeToRule = require('../lib/components/services/schedule/utils/datetime-to-rule')
 
@@ -75,29 +76,58 @@ describe('Rule to datetime tests', function () {
 
 describe('Datetime to rule tests', function () {
   it('No options, should default to now', () => {
-    const now = new Date()
+    const now = moment()
     const rule = datetimeToRule()
 
-    expect(rule.year).to.eql(now.getFullYear())
-    expect(rule.month).to.eql(now.getMonth())
-    expect(rule.date).to.eql(now.getDate())
-    expect(rule.hour).to.eql(now.getHours())
-    expect(rule.minute).to.eql(now.getMinutes())
-    expect(rule.second).to.eql(now.getSeconds())
+    expect(rule.year).to.eql(now.year())
+    expect(rule.month).to.eql(now.month())
+    expect(rule.date).to.eql(now.date())
+    expect(rule.hour).to.eql(now.hour())
+    expect(rule.minute).to.eql(now.minute())
+    expect(rule.second).to.eql(now.second())
   })
 
   it('Specific year, the rest should default to now', () => {
-    const datetime = new Date()
+    let datetime = new Date()
     const year = datetime.getFullYear() + 2
     datetime.setFullYear(year)
 
     const rule = datetimeToRule(datetime)
+    datetime = moment(datetime)
 
     expect(rule.year).to.eql(year)
-    expect(rule.month).to.eql(datetime.getMonth())
-    expect(rule.date).to.eql(datetime.getDate())
-    expect(rule.hour).to.eql(datetime.getHours())
-    expect(rule.minute).to.eql(datetime.getMinutes())
-    expect(rule.second).to.eql(datetime.getSeconds())
+    expect(rule.month).to.eql(datetime.month())
+    expect(rule.date).to.eql(datetime.date())
+    expect(rule.hour).to.eql(datetime.hour())
+    expect(rule.minute).to.eql(datetime.minute())
+    expect(rule.second).to.eql(datetime.second())
+  })
+
+  it('DST test, should change time by +1 hour', () => {
+    const currentDateTime = new Date('Sunday March 27 2022 00:59:00')
+
+    // 2022-03-27T02:00:00+01:00
+    const startDSTDateTime = moment(currentDateTime).add(1, 'minutes')
+
+    // adding 1 min and setting as Date object
+    const rule = datetimeToRule(new Date(currentDateTime.getTime() + (60 * 1000)))
+
+    expect(rule.date).to.eql(startDSTDateTime.date())
+    expect(rule.hour).to.eql(startDSTDateTime.hour())
+    expect(rule.minute).to.eql(startDSTDateTime.minute())
+  })
+
+  it('DST test, should change time by -1 hour', () => {
+    const currentDateTime = new Date('Sunday October 30 2022 01:59:00')
+
+    // 2022-10-30T01:00:00+00:00
+    const endDSTDateTime = moment(currentDateTime).add(1, 'minutes')
+
+    // adding 1 min and setting as Date object
+    const rule = datetimeToRule(new Date(currentDateTime.getTime() + (60 * 1000)))
+
+    expect(rule.date).to.eql(endDSTDateTime.date())
+    expect(rule.hour).to.eql(endDSTDateTime.hour())
+    expect(rule.minute).to.eql(endDSTDateTime.minute())
   })
 })
