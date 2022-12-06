@@ -1,3 +1,23 @@
+# [1.4.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.3.1...v1.4.0) (2022-12-06)
+
+
+### ✨ Features
+
+* commiting progress ([26d8ed1](https://github.com/wmfs/tymly-schedule-plugin/commit/26d8ed1b5fdbbb0a8a85e0a40308e9c8fb8d4339))
+
+
+### 🐛 Bug Fixes
+
+* issues with conflict ([37af828](https://github.com/wmfs/tymly-schedule-plugin/commit/37af82807d1b4b20c57f9a5ebc8396394790b2d9))
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dependency [@semantic-release](https://github.com/semantic-release)/changelog to v6.0.2 ([908350d](https://github.com/wmfs/tymly-schedule-plugin/commit/908350d9c5d5a28848018e49504d8d0efb8f2fc2))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-pg-plugin to v1.276.0 ([c1d33c2](https://github.com/wmfs/tymly-schedule-plugin/commit/c1d33c24891d1bdea789bb7ebc362fd46c2c288b))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-test-helpers to v1.22.2 ([7ce3a0d](https://github.com/wmfs/tymly-schedule-plugin/commit/7ce3a0d358b642dd9b3b48aa1458459e4b266dc7))
+* **deps-dev:** update dependency chai to v4.3.7 ([0ba95fa](https://github.com/wmfs/tymly-schedule-plugin/commit/0ba95fa34087c7efafe4d5da6f3f709c9d014a5d))
+
 ## [1.3.1](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.3.0...v1.3.1) (2022-11-29)
 
 
