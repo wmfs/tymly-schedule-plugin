@@ -1,3 +1,23 @@
+# [1.5.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.4.0...v1.5.0) (2023-02-17)
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dependency mocha to v10.2.0 ([d7d7747](https://github.com/wmfs/tymly-schedule-plugin/commit/d7d77477e929b95cade480db82d37454517122d1))
+* **deps-dev:** update dependency semantic-release to v20 ([dd51685](https://github.com/wmfs/tymly-schedule-plugin/commit/dd51685b8ba3a42146c9feec11b7b83ea6097f4c))
+* **deps-dev:** update dependency semantic-release to v20.0.1 ([36ed615](https://github.com/wmfs/tymly-schedule-plugin/commit/36ed6153d3b8b43d56c4beef50a0e86e9f5dc8fd))
+* **deps-dev:** update dependency semantic-release to v20.0.2 ([272c053](https://github.com/wmfs/tymly-schedule-plugin/commit/272c053596098645f47aefab2efddc59546bab2c))
+* **deps-dev:** update dependency semantic-release to v20.0.3 ([2f96e3c](https://github.com/wmfs/tymly-schedule-plugin/commit/2f96e3cac10e8c69c52ec8ad8b52db7dadd59d92))
+* **deps-dev:** update dependency semantic-release to v20.0.4 ([15597ed](https://github.com/wmfs/tymly-schedule-plugin/commit/15597edd8483cff4118fadc50529a8b7d0a28540))
+* **deps-dev:** update dependency semantic-release to v20.1.0 ([6b744c4](https://github.com/wmfs/tymly-schedule-plugin/commit/6b744c4cce7dc2fb8df1c724c3fe789e2c3f69b1))
+* **deps:** update dependency node-schedule to v2.1.1 ([cf7f73f](https://github.com/wmfs/tymly-schedule-plugin/commit/cf7f73f00566666bc99d151115eadb6ec408879d))
+
+
+### ⚙️ Continuous Integrations
+
+* **circle:** CircleCI update PostgreSQL image to 15 0 [sc-18659] ([f9d9bd9](https://github.com/wmfs/tymly-schedule-plugin/commit/f9d9bd9d9a5edcfc8311be7561f5ba48ca051974))
+* **circle:** update postgres to 15.1-postgis ([dc635d7](https://github.com/wmfs/tymly-schedule-plugin/commit/dc635d78b81fdb17f63f23d7164a643c0f70591e))
+
 # [1.4.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.3.1...v1.4.0) (2022-12-06)
 
 
