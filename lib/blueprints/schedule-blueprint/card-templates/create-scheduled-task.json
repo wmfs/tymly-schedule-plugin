@@ -4,19 +4,6 @@
     "title": "Configure a Scheduled State Machine",
     "category": "schedule"
   },
-  "hooks": {
-    "afterSubmit": {
-      "actions": [
-        {
-          "type": "Action.PushCard",
-          "stateMachineName": "schedule_viewScheduledTask_1_0",
-          "input": {
-            "key": "$.key"
-          }
-        }
-      ]
-    }
-  },
   "type": "AdaptiveCard",
   "body": [
     {
@@ -92,6 +79,19 @@
       "title": "Submit"
     }
   ],
-  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "hooks": {
+    "afterSubmit": {
+      "actions": [
+        {
+          "type": "Action.PushCard",
+          "stateMachineName": "schedule_viewScheduledTask_1_0",
+          "input": {
+            "key": "$.key"
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/wmfs/cardscript-schema/master/lib/schema.json",
   "version": "1.0"
 }
