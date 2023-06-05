@@ -7,8 +7,9 @@ const ruleToDatetime = require('../lib/components/services/schedule/utils/rule-t
 const datetimeToRule = require('../lib/components/services/schedule/utils/datetime-to-rule')
 
 describe('Rule to datetime tests', function () {
-  it('No options, should default to now', () => {
-    const now = new Date()
+  it('No options, should default to now (UTC)', () => {
+    let now = new Date()
+    now = moment(now).add(now.getTimezoneOffset(), 'minutes').toDate()
     const datetime = ruleToDatetime()
 
     expect(datetime.getFullYear()).to.eql(now.getFullYear())
@@ -20,7 +21,8 @@ describe('Rule to datetime tests', function () {
   })
 
   it('Year only, the rest defaults to now', () => {
-    const now = new Date()
+    let now = new Date()
+    now = moment(now).add(now.getTimezoneOffset(), 'minutes').toDate()
     const year = now.getFullYear() + 2
 
     const datetime = ruleToDatetime({ year })
@@ -34,43 +36,49 @@ describe('Rule to datetime tests', function () {
   })
 
   it('All options passed in as integers', () => {
+    const now = new Date()
     const rule = {
-      year: 2020,
-      month: 1,
-      date: 2,
-      hour: 12,
-      minute: 30,
-      second: 0
+      year: now.getFullYear(),
+      month: now.getMonth(),
+      date: now.getDate(),
+      hour: now.getHours(),
+      minute: now.getMinutes(),
+      second: now.getSeconds()
     }
 
     const datetime = ruleToDatetime(rule)
 
-    expect(datetime.getFullYear()).to.eql(rule.year)
-    expect(datetime.getMonth()).to.eql(rule.month)
-    expect(datetime.getDate()).to.eql(rule.date)
-    expect(datetime.getHours()).to.eql(rule.hour)
-    expect(datetime.getMinutes()).to.eql(rule.minute)
-    expect(datetime.getSeconds()).to.eql(rule.second)
+    const utcTimestamp = moment(now).add(now.getTimezoneOffset(), 'minutes').toDate()
+
+    expect(datetime.getFullYear()).to.eql(utcTimestamp.getFullYear())
+    expect(datetime.getMonth()).to.eql(utcTimestamp.getMonth())
+    expect(datetime.getDate()).to.eql(utcTimestamp.getDate())
+    expect(datetime.getHours()).to.eql(utcTimestamp.getHours())
+    expect(datetime.getMinutes()).to.eql(utcTimestamp.getMinutes())
+    expect(datetime.getSeconds()).to.eql(utcTimestamp.getSeconds())
   })
 
   it('All options passed in as strings', () => {
+    const now = new Date()
     const rule = {
-      year: '2020',
-      month: '1',
-      date: '2',
-      hour: '12',
-      minute: '30',
-      second: '0'
+      year: '' + now.getFullYear(),
+      month: '' + now.getMonth(),
+      date: '' + now.getDate(),
+      hour: '' + now.getHours(),
+      minute: '' + now.getMinutes(),
+      second: '' + now.getSeconds()
     }
 
     const datetime = ruleToDatetime(rule)
 
-    expect(datetime.getFullYear().toString()).to.eql(rule.year)
-    expect(datetime.getMonth().toString()).to.eql(rule.month)
-    expect(datetime.getDate().toString()).to.eql(rule.date)
-    expect(datetime.getHours().toString()).to.eql(rule.hour)
-    expect(datetime.getMinutes().toString()).to.eql(rule.minute)
-    expect(datetime.getSeconds().toString()).to.eql(rule.second)
+    const utcTimestamp = moment(now).add(now.getTimezoneOffset(), 'minutes').toDate()
+
+    expect(datetime.getFullYear()).to.eql(utcTimestamp.getFullYear())
+    expect(datetime.getMonth()).to.eql(utcTimestamp.getMonth())
+    expect(datetime.getDate()).to.eql(utcTimestamp.getDate())
+    expect(datetime.getHours()).to.eql(utcTimestamp.getHours())
+    expect(datetime.getMinutes()).to.eql(utcTimestamp.getMinutes())
+    expect(datetime.getSeconds()).to.eql(utcTimestamp.getSeconds())
   })
 })
 
