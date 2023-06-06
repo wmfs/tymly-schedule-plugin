@@ -1,3 +1,32 @@
+# [1.6.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.5.0...v1.6.0) (2023-06-06)
+
+
+### ✨ Features
+
+* updated schema for cardscript files ([02156dc](https://github.com/wmfs/tymly-schedule-plugin/commit/02156dc4efbc13795523ed130de1ad3144e932fe))
+
+
+### 🐛 Bug Fixes
+
+* fixed bug with scheduling an event at a timestamp, to account for timezone offset ([a4b561b](https://github.com/wmfs/tymly-schedule-plugin/commit/a4b561b5592f3bb59b1f1399ac95d87b47b1dc3d))
+* moved moment dep from dev dependencies to main dependencies as serice class uses it ([0d39fca](https://github.com/wmfs/tymly-schedule-plugin/commit/0d39fcad9274c68a04251c98184439d8403b2230))
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dependency [@semantic-release](https://github.com/semantic-release)/changelog to v6.0.3 ([b36f0c4](https://github.com/wmfs/tymly-schedule-plugin/commit/b36f0c4fbcc3c1d3a5f5c614f74c0640e1196791))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-pg-plugin to v1.277.0 ([1af6de4](https://github.com/wmfs/tymly-schedule-plugin/commit/1af6de41da845a565a656b8facd31874fc1ee6d1))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-pg-plugin to v1.278.0 ([befcf37](https://github.com/wmfs/tymly-schedule-plugin/commit/befcf37d7a756e0ca9a19393c4d1870fc8857e53))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-pg-plugin to v1.282.0 ([a9dc578](https://github.com/wmfs/tymly-schedule-plugin/commit/a9dc5789864b9fab522d7a44d830f4679bb93af8))
+* **deps-dev:** update dependency semantic-release to v20.1.1 ([c825925](https://github.com/wmfs/tymly-schedule-plugin/commit/c8259255193dde8730188686542f8da785f319a0))
+* **deps-dev:** update dependency semantic-release to v20.1.3 ([eb9d5ee](https://github.com/wmfs/tymly-schedule-plugin/commit/eb9d5eec5a10356ffefebb0837800aa7d752cbfe))
+* **deps-dev:** update dependency semantic-release to v21 ([cbe91b5](https://github.com/wmfs/tymly-schedule-plugin/commit/cbe91b5118564c1cbb9f43854a611934efc60289))
+
+
+### ⚙️ Continuous Integrations
+
+* **circle:** update postgres to 15.2-postgis [sc-19693] ([a7e5b6c](https://github.com/wmfs/tymly-schedule-plugin/commit/a7e5b6cc54612947118887e15647caf62174e172))
+
 # [1.5.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.4.0...v1.5.0) (2023-02-17)
 
 
