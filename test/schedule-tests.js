@@ -3,6 +3,7 @@
 const expect = require('chai').expect
 const tymly = require('@wmfs/tymly')
 const path = require('path')
+const moment = require('moment')
 
 const scheduleKey = 'tymlyTest_twoSecondCatUpdates'
 
@@ -100,8 +101,8 @@ describe('Tymly schedule tests', function () {
   })
 
   it('update task to specific date/time', async () => {
-    const datetime = new Date()
-    datetime.setSeconds(datetime.getSeconds() + 10)
+    const datetime = moment().utc().add(10, 'seconds').toDate()
+    console.log(`scheduled: ${datetime}`)
 
     await scheduleService.stopAndUpdateTaskSchedule(
       scheduleKey,
