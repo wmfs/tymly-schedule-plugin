@@ -8,7 +8,7 @@ const datetimeToRule = require('../lib/components/services/schedule/utils/dateti
 
 describe('Rule to datetime tests', function () {
   it('No options, should default to now (UTC)', () => {
-    let now = moment().utc().toDate()
+    const now = moment().utc().toDate()
 
     const datetime = ruleToDatetime()
     expect(datetime.getFullYear()).to.eql(now.getFullYear())
