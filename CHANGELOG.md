@@ -1,3 +1,28 @@
+## [1.6.1](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.6.0...v1.6.1) (2023-06-07)
+
+
+### 🐛 Bug Fixes
+
+* better utc handling with consequent test updates ([d15c042](https://github.com/wmfs/tymly-schedule-plugin/commit/d15c042987ebb61fb382eedb057413d718e825ea))
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly-pg-plugin to v1.283.0 ([3322021](https://github.com/wmfs/tymly-schedule-plugin/commit/332202187f248defb6a68403dec428e9176efdbb))
+* **deps-dev:** update dependency semantic-release to v21.0.3 ([b2da7ba](https://github.com/wmfs/tymly-schedule-plugin/commit/b2da7babde8a45e0d899870ee5b4021c8a662d3b))
+* **deps-dev:** update dependency standard to v17.1.0 ([f7def04](https://github.com/wmfs/tymly-schedule-plugin/commit/f7def04f6abdb127fb0aa6ad02cc7b069480dee9))
+
+
+### 📦 Code Refactoring
+
+* renamed vars to improve clarity ([4ed331c](https://github.com/wmfs/tymly-schedule-plugin/commit/4ed331c0edbbd3740e72b18961122d2710ce4e39))
+
+
+### 🚨 Tests
+
+* minor change from let to const for standard ([e81e5de](https://github.com/wmfs/tymly-schedule-plugin/commit/e81e5dec130e9d35ad9460a316a3bce42ea9fcfc))
+* restored tests that were inadvertantly removed ([843e6d5](https://github.com/wmfs/tymly-schedule-plugin/commit/843e6d5e0ddd9e5046e39df8ff068e489e7fdfd7))
+
 # [1.6.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.5.0...v1.6.0) (2023-06-06)
 
 
