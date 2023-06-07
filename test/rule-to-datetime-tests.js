@@ -93,4 +93,36 @@ describe('Datetime to rule tests', function () {
     expect(rule.minute).to.eql(now.minute())
     expect(rule.second).to.eql(now.second())
   })
+
+  it('DST test, should change time by +1 hour', () => {
+    const lastMinuteOfGMT = new Date('Sunday March 27 2022 00:59:00')
+    console.log(`last minute of GMT: ${lastMinuteOfGMT}`)
+
+    let startOfBSTDateTime = moment(lastMinuteOfGMT).add(1, 'minutes').toDate()
+    console.log(`start of BST: ${startOfBSTDateTime}`)
+
+    // adding 1 min and setting as Date object
+    const rule = datetimeToRule(new Date(lastMinuteOfGMT.getTime() + (60 * 1000)))
+
+    startOfBSTDateTime = moment(startOfBSTDateTime).utc()
+    expect(rule.date).to.eql(startOfBSTDateTime.date())
+    expect(rule.hour).to.eql(startOfBSTDateTime.hour())
+    expect(rule.minute).to.eql(startOfBSTDateTime.minute())
+  })
+
+  it('DST test, should change time by -1 hour', () => {
+    const lastMinuteOfBST = new Date('Sunday October 30 2022 01:59:00')
+    console.log(`last minute of BST: ${lastMinuteOfBST}`)
+
+    let startOfGMTDateTime = moment(lastMinuteOfBST).add(1, 'minutes').toDate()
+    console.log(`start of GMT: ${startOfGMTDateTime}`)
+
+    // adding 1 min and setting as Date object
+    const rule = datetimeToRule(new Date(lastMinuteOfBST.getTime() + (60 * 1000)))
+
+    startOfGMTDateTime = moment(startOfGMTDateTime).utc()
+    expect(rule.date).to.eql(startOfGMTDateTime.date())
+    expect(rule.hour).to.eql(startOfGMTDateTime.hour())
+    expect(rule.minute).to.eql(startOfGMTDateTime.minute())
+  })
 })
