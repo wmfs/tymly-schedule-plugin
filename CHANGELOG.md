@@ -1,3 +1,5 @@
+# [1.7.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.6.1...v1.7.0) (2024-07-02)
+
 ## [1.6.1](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.6.0...v1.6.1) (2023-06-07)
 
 
