@@ -23,7 +23,7 @@
   "main": "./lib/index.js",
   "dependencies": {
     "node-schedule": "2.1.1",
-    "uuid": "11.0.3",
+    "uuid": "11.0.4",
     "moment": "2.30.1"
   },
   "devDependencies": {
