@@ -1,3 +1,9 @@
+## [1.12.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.11.0...v1.12.0) (2025-01-10)
+
+### Build system dependencies :hammer:
+
+* **deps:** update dependency uuid to v11.0.5 ([#135](https://github.com/wmfs/tymly-schedule-plugin/issues/135)) ([fb57ed7](https://github.com/wmfs/tymly-schedule-plugin/commit/fb57ed7d0af4711eac62e1ebeab757c135ab6d1b))
+
 ## [1.11.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.10.0...v1.11.0) (2025-01-06)
 
 ### Build system dependencies :hammer:
