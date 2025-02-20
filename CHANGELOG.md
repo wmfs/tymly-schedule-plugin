@@ -1,3 +1,19 @@
+## [1.13.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.12.0...v1.13.0) (2025-02-20)
+
+### Build system dependencies :hammer:
+
+* **deps-dev:** update dependency @semantic-release/exec to v7 ([#138](https://github.com/wmfs/tymly-schedule-plugin/issues/138)) ([dfa212c](https://github.com/wmfs/tymly-schedule-plugin/commit/dfa212c4f0e095e62371ad6533cbf52f7b0bd645))
+* **deps-dev:** update dependency @semantic-release/exec to v7.0.2 ([#139](https://github.com/wmfs/tymly-schedule-plugin/issues/139)) ([33bb401](https://github.com/wmfs/tymly-schedule-plugin/commit/33bb401557234fdb083ef107902d11c709d80baf))
+* **deps-dev:** update dependency @semantic-release/exec to v7.0.3 ([#140](https://github.com/wmfs/tymly-schedule-plugin/issues/140)) ([f16bb9f](https://github.com/wmfs/tymly-schedule-plugin/commit/f16bb9f693968c2b574d0cb2f99289697cb8bf55))
+* **deps-dev:** update dependency @wmfs/tymly-pg-plugin to v1.306.0 ([#136](https://github.com/wmfs/tymly-schedule-plugin/issues/136)) ([b0f1b5d](https://github.com/wmfs/tymly-schedule-plugin/commit/b0f1b5dc5649314bb8fb5c4cef3379b0d72b90f3))
+* **deps-dev:** update dependency @wmfs/tymly-pg-plugin to v1.308.0 ([#142](https://github.com/wmfs/tymly-schedule-plugin/issues/142)) ([ae71d06](https://github.com/wmfs/tymly-schedule-plugin/commit/ae71d06db2975e1210da35b45be634358baa63a3))
+* **deps-dev:** update dependency @wmfs/tymly-pg-plugin to v1.309.0 ([#143](https://github.com/wmfs/tymly-schedule-plugin/issues/143)) ([8bc9366](https://github.com/wmfs/tymly-schedule-plugin/commit/8bc9366890a76694fe5138393d33c3b149cc8e3b))
+* **deps-dev:** update dependency @wmfs/tymly-pg-plugin to v1.310.0 ([#145](https://github.com/wmfs/tymly-schedule-plugin/issues/145)) ([c7ddf8b](https://github.com/wmfs/tymly-schedule-plugin/commit/c7ddf8b09378d68b1e292deaaf143c8ca766cfa7))
+* **deps-dev:** update dependency mocha to v11.1.0 ([#137](https://github.com/wmfs/tymly-schedule-plugin/issues/137)) ([6136778](https://github.com/wmfs/tymly-schedule-plugin/commit/6136778f8bc220e885434a6b0a257cd7321e1eee))
+* **deps-dev:** update dependency semantic-release to v24.2.2 ([#141](https://github.com/wmfs/tymly-schedule-plugin/issues/141)) ([52bcc6d](https://github.com/wmfs/tymly-schedule-plugin/commit/52bcc6df1448e05f34af672c4cd451ba93de4bac))
+* **deps-dev:** update dependency semantic-release to v24.2.3 ([#144](https://github.com/wmfs/tymly-schedule-plugin/issues/144)) ([82756ba](https://github.com/wmfs/tymly-schedule-plugin/commit/82756ba214d05bf16067bada0af362892aec047e))
+* **deps:** update dependency uuid to v11.1.0 ([#146](https://github.com/wmfs/tymly-schedule-plugin/issues/146)) ([8f5998a](https://github.com/wmfs/tymly-schedule-plugin/commit/8f5998ad03c93e916c9fe27f46e3d7259ce29ec4))
+
 ## [1.12.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.11.0...v1.12.0) (2025-01-10)
 
 ### Build system dependencies :hammer:
