@@ -2,7 +2,7 @@
 
 const expect = require('chai').expect
 const tymly = require('@wmfs/tymly')
-const path = require('path')
+const path = require('node:path')
 const moment = require('moment')
 
 const scheduleKey = 'tymlyTest_twoSecondCatUpdates'
@@ -34,7 +34,8 @@ describe('Tymly schedule tests', function () {
         pluginPaths: [
           path.resolve(__dirname, '..'),
           require.resolve('@wmfs/tymly-pg-plugin'),
-          require.resolve('@wmfs/tymly-test-helpers/plugins/mock-users-plugin')
+          require.resolve('@wmfs/tymly-test-helpers/plugins/mock-users-plugin'),
+          require.resolve('@wmfs/tymly-test-helpers/plugins/mock-user-info-plugin')
         ]
       }
     )
@@ -152,6 +153,54 @@ describe('Tymly schedule tests', function () {
     expect(catStats.length).to.eql(lastRunCount)
   })
 
+  it('set scheduled task createdBy column', async () => {
+    await client.query(`UPDATE schedule.task SET _created_by = 'tymly.test@wmfs.net' where key='${scheduleKey}';`)
+  })
+
+  it('check the task update has persisted to the database', async () => {
+    const tasks = await taskModel.find({})
+    expect(tasks.length).to.eql(1)
+    expect(tasks[0].createdBy).to.eql('tymly.test@wmfs.net')
+  })
+
+  it('update task to specific date/time (again)', async () => {
+    const datetime = moment().utc().add(10, 'seconds').toDate()
+    console.log(`scheduled: ${datetime}`)
+
+    await scheduleService.stopAndUpdateTaskSchedule(
+      scheduleKey,
+      {
+        year: datetime.getFullYear(),
+        month: datetime.getMonth(),
+        date: datetime.getDate(),
+        hour: datetime.getHours(),
+        minute: datetime.getMinutes(),
+        second: datetime.getSeconds()
+      }
+    )
+
+    await scheduleService.startTask(scheduleKey)
+  })
+
+  it('wait 15 seconds', done => setTimeout(done, 15000))
+
+  it('check the state machine has run once more', async () => {
+    lastRunCount++
+
+    const tasks = await taskModel.find({})
+    expect(tasks.length).to.eql(1)
+    expect(tasks[0].interval).to.eql(null)
+    expect(tasks[0].datetime).to.not.eql(null)
+    expect(tasks[0].scheduleType).to.eql('datetime')
+    expect(tasks[0].status).to.eql('STARTED')
+
+    const executions = await scheduleService.findScheduledExecutions(scheduleKey)
+    expect(executions.length).to.eql(lastRunCount)
+
+    const catStats = await catStatsModel.find({})
+    expect(catStats.length).to.eql(lastRunCount)
+  })
+
   it('shutdown Tymly', async () => {
     await tymlyService.shutdown()
   })
@@ -165,7 +214,8 @@ describe('Tymly schedule tests', function () {
         pluginPaths: [
           path.resolve(__dirname, '..'),
           require.resolve('@wmfs/tymly-pg-plugin'),
-          require.resolve('@wmfs/tymly-test-helpers/plugins/mock-users-plugin')
+          require.resolve('@wmfs/tymly-test-helpers/plugins/mock-users-plugin'),
+          require.resolve('@wmfs/tymly-test-helpers/plugins/mock-user-info-plugin')
         ]
       }
     )
