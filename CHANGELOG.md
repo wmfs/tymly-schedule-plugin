@@ -1,3 +1,5 @@
+## [1.13.2](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.13.1...v1.13.2) (2026-08-13)
+
 ## [1.13.1](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.13.0...v1.13.1) (2026-03-17)
 
 ### Bug Fix(es) :bug:
