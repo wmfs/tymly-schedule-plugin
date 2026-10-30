@@ -1,3 +1,26 @@
+## [1.14.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.13.2...v1.14.0) (2026-10-30)
+
+### Build system dependencies :hammer:
+
+* **deps-dev:** fix conventionalcommit versions [sc-34125] ([d10d568](https://github.com/wmfs/tymly-schedule-plugin/commit/d10d568798867431b3bc41ee94000237e8db3b82))
+* **deps-dev:** update [@wmfs](https://github.com/wmfs) packages ([#232](https://github.com/wmfs/tymly-schedule-plugin/issues/232)) ([7c67e4d](https://github.com/wmfs/tymly-schedule-plugin/commit/7c67e4d1c9af24a6565ee8508e4b0ee64cdba49c))
+* **deps-dev:** update dependency @wmfs/tymly to v1.317.1 ([#230](https://github.com/wmfs/tymly-schedule-plugin/issues/230)) ([2b382f3](https://github.com/wmfs/tymly-schedule-plugin/commit/2b382f3de250c166ef6326da35928474dc79b79d))
+* **deps-dev:** update dependency @wmfs/tymly-pg-plugin to v1.348.1 ([#218](https://github.com/wmfs/tymly-schedule-plugin/issues/218)) ([ccf553a](https://github.com/wmfs/tymly-schedule-plugin/commit/ccf553aaca186b5176c25bb157e9b783c315b99c))
+* **deps-dev:** update dependency @wmfs/tymly-test-helpers to v1.24.1 ([#219](https://github.com/wmfs/tymly-schedule-plugin/issues/219)) ([f56e3ba](https://github.com/wmfs/tymly-schedule-plugin/commit/f56e3ba2792ed1710b35645b5e94494fb1ea4fc8))
+* **deps-dev:** update dependency conventional-changelog-conventionalcommits to v10.4.0 ([#220](https://github.com/wmfs/tymly-schedule-plugin/issues/220)) ([9183018](https://github.com/wmfs/tymly-schedule-plugin/commit/9183018a5b1e92af9bba85a078675475ca60663f))
+* **deps-dev:** update dependency conventional-changelog-conventionalcommits to v10.4.1 ([#227](https://github.com/wmfs/tymly-schedule-plugin/issues/227)) ([2e5e865](https://github.com/wmfs/tymly-schedule-plugin/commit/2e5e8654915396a3937dec47e93041a3640b9422))
+* **deps-dev:** update dependency mocha to v12 ([#221](https://github.com/wmfs/tymly-schedule-plugin/issues/221)) ([c55c378](https://github.com/wmfs/tymly-schedule-plugin/commit/c55c378894bde7555f78d7ba39368bcd59cf453c))
+* **deps-dev:** update dependency mocha to v12.0.1 ([#222](https://github.com/wmfs/tymly-schedule-plugin/issues/222)) ([a295a8c](https://github.com/wmfs/tymly-schedule-plugin/commit/a295a8cfe2e8e9b5327376c43b66ab6f2b12c810))
+* **deps-dev:** update dependency mocha to v12.0.2 ([#224](https://github.com/wmfs/tymly-schedule-plugin/issues/224)) ([4593db2](https://github.com/wmfs/tymly-schedule-plugin/commit/4593db231bafdede8258daa4a1a9a96c71cd1e17))
+* **deps-dev:** update dependency mocha to v12.0.3 ([#225](https://github.com/wmfs/tymly-schedule-plugin/issues/225)) ([702a326](https://github.com/wmfs/tymly-schedule-plugin/commit/702a326a1189f73998f6236c7520baf577a3563d))
+* **deps:** update dependency moment to v2.31.0 [security] ([#226](https://github.com/wmfs/tymly-schedule-plugin/issues/226)) ([983bc72](https://github.com/wmfs/tymly-schedule-plugin/commit/983bc72e99705476dbe09b024c42ee58d5a3033c))
+* **deps:** update dependency uuid to v11.1.1 [security] ([#201](https://github.com/wmfs/tymly-schedule-plugin/issues/201)) ([2a30c0d](https://github.com/wmfs/tymly-schedule-plugin/commit/2a30c0d5f7c92630eb2d9ab747b9698f693e90d6))
+
+### CICD Configuration Changes :construction_worker:
+
+* use github-app-token orb for release token [sc-34101] ([#231](https://github.com/wmfs/tymly-schedule-plugin/issues/231)) ([b6a30f9](https://github.com/wmfs/tymly-schedule-plugin/commit/b6a30f99037e57b11254b6d3f68dc79bb3e4daf8))
+* use shared renovate preset [sc-34117] ([#229](https://github.com/wmfs/tymly-schedule-plugin/issues/229)) ([5765986](https://github.com/wmfs/tymly-schedule-plugin/commit/57659861f958847263942db2f7d6cfec787b21cb))
+
 ## [1.13.2](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.13.1...v1.13.2) (2026-08-13)
 
 ## [1.13.1](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.13.0...v1.13.1) (2026-03-17)
