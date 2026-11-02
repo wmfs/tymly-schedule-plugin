@@ -1,3 +1,9 @@
+## [1.16.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.15.0...v1.16.0) (2026-11-02)
+
+### Build system dependencies :hammer:
+
+* **deps:** update dependency node-schedule to v2.1.2 ([#228](https://github.com/wmfs/tymly-schedule-plugin/issues/228)) ([db5f5de](https://github.com/wmfs/tymly-schedule-plugin/commit/db5f5de45f24612e9ffcfbf4c918d28645381fb0))
+
 ## [1.15.0](https://github.com/wmfs/tymly-schedule-plugin/compare/v1.14.0...v1.15.0) (2026-11-02)
 
 ### Build system dependencies :hammer:
